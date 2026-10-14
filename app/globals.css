@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: #f6f1e8;
+  --card: #fdfbf7;
+  --line: #e5daca;
+  --wine-900: #3e1522;
+  --wine-700: #4b1f2e;
+  --ink: #2b1d21;
+  --muted: #97878a;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.micro-label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
