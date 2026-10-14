@@ -1,0 +1,37 @@
+{
+  "name": "clother-app",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Dej. by Ayodeji — bespoke formalwear platform",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start -p ${PORT:-3000}",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "fw:spike": "node scripts/fw-spike.mjs"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.600.0",
+    "@aws-sdk/s3-request-presigner": "^3.600.0",
+    "better-auth": "^1.1.0",
+    "drizzle-orm": "^0.33.0",
+    "next": "14.2.x",
+    "nodemailer": "^6.9.0",
+    "pg": "^8.12.0",
+    "react": "18.3.x",
+    "react-dom": "18.3.x"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/nodemailer": "^6.4.0",
+    "@types/pg": "^8.11.0",
+    "@types/react": "^18.3.0",
+    "autoprefixer": "^10.4.0",
+    "drizzle-kit": "^0.24.0",
+    "postcss": "^8.4.0",
+    "tailwindcss": "^3.4.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.5.0"
+  }
+}
