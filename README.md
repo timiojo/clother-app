@@ -15,14 +15,19 @@ Better Auth, Cloudflare R2, ZeptoMail, Flutterwave. Self-hosted on your Mac (no 
 
 ```bash
 cd clother-app
-cp ../.env.example .env.local   # or: cp .env.example .env.local (once pushed, file lives here)
-# edit .env.local with your keys (never commit it)
+cp .env.example .env.local   # edit .env.local with your keys (never commit it)
 npm install
-npm run db:push                 # creates tables in local Postgres
-npm run dev                     # http://localhost:3000
+npm run db:push              # creates tables in local Postgres
+npm run dev                  # http://localhost:3000
 ```
 
-Pages now: `/` (studio home) · `/design` (token swatches).
+Entry flow (customer sees first):
+- `/` — public landing, compelling copy + "Start a request" / "Sign in"
+- `/login` — email/password sign in
+- `/signup` — email/password sign up → verification email via ZeptoMail → check inbox
+- `/dashboard`, `/projects/*` — protected; middleware redirects to `/login` if not signed in
+
+Pages now: `/` (studio home) · `/login` · `/signup` · `/design` (token swatches).
 
 ## 2 · Phase 0 validation (before building commerce)
 
