@@ -16,7 +16,7 @@ export default function Home() {
       </header>
 
       <section className="max-w-4xl mx-auto px-6 py-20 text-center">
-        <span className="micro">Dej. by Ayodeji · Bespoke formalwear</span>
+        <span className="micro">Bespoke formalwear</span>
         <h1 className="font-display text-4xl md:text-5xl text-wine-900 mt-3">
           Commissioned pieces, clearly managed.
         </h1>
