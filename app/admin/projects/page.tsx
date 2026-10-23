@@ -1,66 +1,87 @@
 "use client";
 
 import { useSession } from "better-auth/react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-export default function ProjectsPage() {
+export default function ProjectPage() {
   const { session } = useSession();
+  const [activeTab, setActiveTab] = useState("chat");
 
   useEffect(() => {
     if (!session || session.user.group !== "admin") {
-      // middleware handles redirect; guard anyway
+      // middleware handles redirect
     }
   }, [session]);
 
+  if (!session || session.user.group !== "admin") return null;
+
+  const tabs = [
+    { key: "chat", label: "Chat" },
+    { key: "brief", label: "Brief" },
+    { key: "quote", label: "Quote" },
+    { key: "files", label: "Files" },
+  ];
+
   return (
     <div className="space-y-6">
-      <div>
-        <p className="micro">Projects</p>
-        <h1 className="serif text-2xl text-wine-900 mt-1">Active projects</h1>
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="micro">Project</p>
+          <h1 className="serif text-2xl text-wine-900 mt-1">Champagne gold bespoke dress</h1>
+          <p className="text-muted text-sm mt-1">Client: Abie Johnson · Status: Awaiting approval</p>
+        </div>
+        <div className="flex gap-2">
+          <button className="text-xs font-bold text-wine px-3 py-1 rounded border border-line">
+            Edit project
+          </button>
+        </div>
       </div>
 
-      <div className="flex items-center justify-between mb-4">
-        <button className="btn-outline" style={{ padding: "6px 12px", fontSize: "12px", fontWeight: "700", borderRadius: "4px" }}>
-          Mark all reviewed
-        </button>
+      <div className="flex gap-2 border-b border-line mb-6">
+        {tabs.map((t) => (
+          <button
+            key={t.key}
+            onClick={() => setActiveTab(t.key)}
+            className={`px-4 py-2 text-xs font-bold border-b-2 transition ${
+              activeTab === t.key
+                ? "border-wine text-wine"
+                : "border-transparent text-muted hover:text-wine"
+            }`}
+          >
+            {t.label}
+          </button>
+        ))}
       </div>
 
-      <table className="w-full text-left border border-line">
-        <thead>
-          <tr className="border-b border-line">
-            <th className="pb-2 text-xs tracking-wider uppercase text-muted">Project</th>
-            <th className="pb-2 text-xs tracking-wider uppercase text-muted">Customer</th>
-            <th className="pb-2 text-xs tracking-wider uppercase text-muted">Stage</th>
-            <th className="pb-2 text-xs tracking-wider uppercase text-muted">Deposit</th>
-            <th className="pb-2 text-xs tracking-wider uppercase text-muted">Balance</th>
-            <th className="pb-2 text-xs tracking-wider uppercase text-muted">Progress</th>
-            <th className="pb-2 text-xs tracking-wider uppercase text-muted">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {[
-            { project: "Champagne gold dress", customer: "Abie Johnson", stage: "Production", deposit: "₦208,450", balance: "₦208,450", progress: 65 },
-            { project: "Tailored suit", customer: "Samuel Adebayo", stage: "Fittings", deposit: "₦90,000", balance: "₦90,000", progress: 40 },
-          ].map((p, i) => (
-            <tr key={i} className="border-b border-line hover:bg-[#F8F3E8]">
-              <td className="py-4 font-bold serif">{p.project}</td>
-              <td className="py-4">{p.customer}</td>
-              <td className="py-4">{p.stage}</td>
-              <td className="py-4 font-bold text-wine-900">{p.deposit}</td>
-              <td className="py-4 font-bold text-wine-900">{p.balance}</td>
-              <td className="py-4">
-                <div className="text-xs">{p.progress}%</div>
-                <div className="h-2 w-full bg-[#F8F3E8] rounded-full mt-1">
-                  <div className={`h-full rounded-full bg-wine`} style={{ width: `${p.progress}%` }} />
-                </div>
-              </td>
-              <td className="py-4">
-                <button className="text-xs font-bold text-wine underline decoration-wine/30 hover:decoration-wine">Update</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {activeTab === "chat" && (
+        <div className="h-[600px] border border-line rounded-lg overflow-hidden flex flex-col">
+          <iframe
+            title="Project chat"
+            src="/admin/projects/placeholder/chat"
+            className="w-full h-full"
+            style={{ border: "none" }}
+          />
+          <p className="text-center text-muted mt-4 pt-4 border-t border-line">
+            Chat thread renders here — see <code>/admin/projects/[id]</code> for the live chat page.
+          </p>
+        </div>
+      )}
+      {activeTab === "brief" && (
+        <div className="bg-card border border-line rounded-lg p-6">
+          <p className="text-sm text-muted">Garment type: Evening dress · Occasion: December wedding</p>
+          <p className="mt-2 text-sm">Design notes: Champagne gold, modest neckline, floor length.</p>
+        </div>
+      )}
+      {activeTab === "quote" && (
+        <div className="bg-card border border-line rounded-lg p-6">
+          <p className="text-sm text-muted">Total: ₦416,900 · Deposit: ₦208,450 · Status: Sent</p>
+        </div>
+      )}
+      {activeTab === "files" && (
+        <div className="bg-card border border-line rounded-lg p-6">
+          <p className="text-sm text-muted">Reference images: 2 uploaded · Measurements: on file</p>
+        </div>
+      )}
     </div>
   );
 }
