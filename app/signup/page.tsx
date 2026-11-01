@@ -52,7 +52,7 @@ export default function SignupPage() {
     <main className="min-h-screen flex items-center justify-center bg-paper px-6 py-12">
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
-          <span className="logo serif text-4xl text-wine">Clother.</span>
+          <span className="logo serif text-4xl text-wine">Dej.<span className="block font-sans text-[10px] tracking-[0.34em] mt-2">BY AYODEJI</span></span>
           <p className="micro mt-2">Create your account</p>
         </div>
 
