@@ -3,34 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clother — Admin Portal</title>
+<title>Dej. by Ayodeji — Admin Portal</title>
 <style>
-  :root{--paper:#F6F1E8;--card:#FDFBF7;--line:#E5DACA;--wine900:#3E1522;--wine:#4B1F2E;--wine500:#6E3445;--ink:#2B1D21;--muted:#97878A;--ok:#2E7D4F;--warn:#9A6B1E;--danger:#A83232}
-  *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,Inter,"Segoe UI",sans-serif;line-height:1.55}
-  .serif{font-family:"Playfair Display",Georgia,serif}
+  :root{
+    --paper:#F6F1E8; --card:#FDFBF7; --line:#E5DACA;
+    --wine-900:#3E1522; --wine-700:#4B1F2E; --wine-500:#6E3445; --wine-100:#EFE0E2;
+    --ink:#2B1D21; --muted:#97878A; --ok:#2E7D4F; --warn:#9A6B1E; --danger:#A83232;
+    --r-sm:4px; --r-md:10px;
+    --shadow:0 1px 2px rgba(62,21,34,.05),0 10px 30px rgba(62,21,34,.07);
+  }
+  *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",sans-serif;line-height:1.55}
+  .serif{font-family:"Playfair Display",Georgia,"Times New Roman",serif}
   .micro{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
   .app{display:flex;min-height:100vh}
-  aside{width:260px;background:var(--wine);color:var(--card);flex-shrink:0;border-right:1px solid rgba(255,255,255,.12)}
-  aside .brand{padding:20px;font-size:28px;font-weight:700;font-family:"Playfair Display",Georgia,serif;color:var(--card);border-bottom:1px solid rgba(255,255,255,.12)}
+  aside{width:260px;background:var(--wine-700);color:var(--card);flex-shrink:0;border-right:1px solid rgba(255,255,255,.12)}
+  aside .brand{padding:20px;font-size:30px;font-weight:700;font-family:"Playfair Display",Georgia,serif;color:var(--card);border-bottom:1px solid rgba(255,255,255,.12)}
+  aside .brand small{display:block;font-size:10px;letter-spacing:.34em;margin-top:6px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--wine-100)}
   aside nav{padding:16px}
-  aside .nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:4px;color:rgba(249,247,244,.85);text-decoration:none;font-size:14px;margin-bottom:4px;cursor:pointer}
+  aside .nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:var(--r-sm);color:rgba(249,247,244,.85);text-decoration:none;font-size:14px;margin-bottom:4px;cursor:pointer}
   aside .nav-item:hover{background:rgba(249,247,244,.1)}
   aside .nav-item.active{background:var(--wine-500);color:var(--card)}
-  aside .nav-item .k{width:20px}
   main{flex:1;overflow:auto;padding:24px}
   header.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px;position:sticky;top:0;background:var(--paper);padding:12px 0;z-index:10}
   header.top h1{font-family:"Playfair Display",Georgia,serif;font-size:26px;color:var(--wine-900);margin:0}
   .user-chip{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:30px;padding:6px 14px;font-size:13px}
-  .avatar{width:32px;height:32px;border-radius:50%;background:var(--wine);color:var(--card);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+  .avatar{width:32px;height:32px;border-radius:50%;background:var(--wine-700);color:var(--card);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
   .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:26px}
-  .stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:18px}
   .stat .v{font-size:28px;font-weight:800;color:var(--wine-900);font-family:"Playfair Display",Georgia,serif}
   .stat .l{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:4px}
   .stat .delta{font-size:12px;color:var(--ok);margin-top:6px;font-weight:700}
   .tabs{border-bottom:1px solid var(--line);display:flex;gap:0;margin-bottom:20px}
   .tab{padding:12px 18px;font-size:13px;font-weight:700;color:var(--muted);border-bottom:2px solid transparent;cursor:pointer;background:none;border:0}
-  .tab.active{color:var(--wine);border-bottom-color:var(--wine)}
-  .tab:hover{color:var(--wine)}
+  .tab.active{color:var(--wine-700);border-bottom-color:var(--wine-700)}
+  .tab:hover{color:var(--wine-700)}
   .panel{display:none}
   .panel.active{display:block}
   table{width:100%;border-collapse:collapse;font-size:14px}
@@ -40,25 +47,26 @@
   .badge{font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px;display:inline-block}
   .b-await{background:#F3E8C8;color:#7A5410}
   .b-prog{background:#E3EAFB;color:#2B4C8A}
-  .b-appr{background:#EFE0E2;color:var(--wine)}
+  .b-appr{background:var(--wine-100);color:var(--wine-700)}
   .b-done{background:#DFF2E4;color:#1E6B3A}
   .b-canc{background:#F5D9D9;color:#8F2424}
-  .btn{display:inline-flex;align-items:center;gap:6px;border:0;border-radius:4px;padding:9px 16px;font-size:13px;font-weight:700;cursor:pointer;background:var(--wine);color:var(--card)}
+  .btn{display:inline-flex;align-items:center;gap:6px;border:0;border-radius:var(--r-sm);padding:9px 16px;font-size:13px;font-weight:700;cursor:pointer;background:var(--wine-700);color:var(--card)}
   .btn-sm{padding:6px 12px;font-size:12px}
-  .btn-outline{background:transparent;color:var(--wine);border:1px solid var(--wine)}
+  .btn-outline{background:transparent;color:var(--wine-700);border:1px solid var(--wine-700)}
   .btn-danger{background:var(--danger);color:var(--card)}
   .btn-outline-danger{background:transparent;color:var(--danger);border:1px solid var(--danger)}
   .empty{text-align:center;padding:40px;color:var(--muted)}
   .empty .ico{font-size:48px;margin-bottom:12px}
   .money{font-family:"Playfair Display",Georgia,serif;font-weight:800;color:var(--wine-900)}
-  .pill{font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;display:inline-block}
-  .chip{font-size:12px;padding:4px 10px;border-radius:4px;background:#F8F3E8;color:var(--wine);border:1px solid var(--line)}
-  footer{margin-top:60px;padding-bottom:40px;color:var(--muted);font-size:11px;letter-spacing:.2em;text-align:center;text-transform:uppercase}
+  .steps{display:flex;margin:12px 0}.step{flex:1;text-align:center;font-size:10px;color:var(--muted)}
+  .step .dot{width:24px;height:24px;border-radius:50%;background:#EDE4D6;margin:0 auto 4px;display:flex;align-items:center;justify-content:center;font-weight:800}
+  .step.on .dot{background:var(--wine-700);color:var(--card)}.step.on{color:var(--wine-700)}
   .mobile-toggle{display:none}
+  .overlay{display:none}
   @media(max-width:768px){
     aside{position:fixed;left:0;top:0;bottom:0;width:260px;transform:translateX(-100%);z-index:100;transition:transform .2s}
     aside.open{transform:translateX(0)}
-    .mobile-toggle{display:block;position:fixed;top:12px;left:12px;z-index:110;background:var(--wine);color:var(--card);border:none;border-radius:4px;padding:8px 14px;font-weight:700;cursor:pointer}
+    .mobile-toggle{display:block;position:fixed;top:12px;left:12px;z-index:110;background:var(--wine-700);color:var(--card);border:none;border-radius:var(--r-sm);padding:8px 14px;font-weight:700;cursor:pointer}
     .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:99}
     .overlay.open{display:block}
     main{padding:16px;padding-top:60px}
@@ -71,7 +79,7 @@
 <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
 
 <aside id="sidebar">
-  <div class="brand">Clother.<div class="micro" style="margin-top:4px">ADMIN</div></div>
+  <div class="brand">Dej.<small>BY AYODEJI</small></div>
   <nav>
     <div class="nav-item active" onclick="show('dashboard')"><span class="k">📊</span>Dashboard</div>
     <div class="nav-item" onclick="show('requests')"><span class="k">📝</span>Requests</div>
@@ -91,16 +99,15 @@
 <main>
   <header class="top">
     <h1 id="page-title">Dashboard</h1>
-    <div class="user-chip"><div class="avatar">DA</div><span>Designer · Dej. by Ayodeji</span></div>
+    <div class="user-chip"><div class="avatar">DA</div><span>Lead Designer · Dej. by Ayodeji</span></div>
   </header>
 
-  <!-- DASHBOARD -->
   <div class="panel active" id="panel-dashboard">
     <div class="stats">
       <div class="stat"><div class="v">12</div><div class="l">Requests this month</div><div class="delta">↑ 3 vs last month</div></div>
-      <div class="stat"><div class="v">₦416,900</div><div class="l">Pending quotes</div><div class="delta">£0 · ₦416,900</div></div>
+      <div class="stat"><div class="v" style="font-size:22px">₦416,900</div><div class="l">Pending quotes</div><div class="delta">£0 · ₦416,900</div></div>
       <div class="stat"><div class="v">4</div><div class="l">Active projects</div><div class="delta">2 this week</div></div>
-      <div class="stat"><div class="v">₦208,450</div><div class="l">Deposits collected</div><div class="delta">2 paid · 1 failed</div></div>
+      <div class="stat"><div class="v" style="font-size:22px">₦208,450</div><div class="l">Deposits collected</div><div class="delta">2 paid · 1 failed</div></div>
     </div>
     <div class="tabs">
       <div class="tab active">Recent activity</div>
@@ -117,7 +124,6 @@
     </table>
   </div>
 
-  <!-- REQUESTS -->
   <div class="panel" id="panel-requests">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
       <h2 style="margin:0;font-size:20px;color:var(--wine-900)">Outfit requests</h2>
@@ -133,7 +139,6 @@
     </table>
   </div>
 
-  <!-- PROJECTS -->
   <div class="panel" id="panel-projects">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
       <h2 style="margin:0;font-size:20px;color:var(--wine-900)">Active projects</h2>
@@ -142,19 +147,17 @@
     <table>
       <thead><tr><th>Project</th><th>Customer</th><th>Stage</th><th>Deposit</th><th>Balance</th><th>Progress</th><th>Action</th></tr></thead>
       <tbody>
-        <tr><td><b class="serif">Champagne gold dress</b></td><td>Abie Johnson</td><td>Production</td><td class="money">₦208,450</td><td class="money">₦208,450</td><td>65%<div style="height:6px;background:#F8F3E8;border-radius:3px;margin-top:4px"><div style="width:65%;background:var(--wine);height:100%;border-radius:3px"></div></div></td><td><button class="btn btn-sm btn-outline">Update</button></td></tr>
-        <tr><td><b class="serif">Tailored suit</b></td><td>Samuel Adebayo</td><td>Fittings</td><td class="money">₦90,000</td><td class="money">₦90,000</td><td>40%<div style="height:6px;background:#F8F3E8;border-radius:3px;margin-top:4px"><div style="width:40%;background:var(--wine);height:100%;border-radius:3px"></div></div></td><td><button class="btn btn-sm btn-outline">Update</button></td></tr>
+        <tr><td><b class="serif">Champagne gold dress</b></td><td>Abie Johnson</td><td>Production</td><td class="money">₦208,450</td><td class="money">₦208,450</td><td>65%<div style="height:6px;background:#F8F3E8;border-radius:3px;margin-top:4px"><div style="width:65%;background:var(--wine-700);height:100%;border-radius:3px"></div></div></td><td><button class="btn btn-sm btn-outline">Update</button></td></tr>
+        <tr><td><b class="serif">Tailored suit</b></td><td>Samuel Adebayo</td><td>Fittings</td><td class="money">₦90,000</td><td class="money">₦90,000</td><td>40%<div style="height:6px;background:#F8F3E8;border-radius:3px;margin-top:4px"><div style="width:40%;background:var(--wine-700);height:100%;border-radius:3px"></div></div></td><td><button class="btn btn-sm btn-outline">Update</button></td></tr>
       </tbody>
     </table>
   </div>
 
-  <!-- BOOKINGS -->
   <div class="panel" id="panel-bookings">
     <h2 style="margin:0 0 16px;font-size:20px;color:var(--wine-900)">Consultation bookings</h2>
     <div class="empty"><div class="ico">📅</div><p>No bookings this week.</p></div>
   </div>
 
-  <!-- QUOTES -->
   <div class="panel" id="panel-quotes">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
       <h2 style="margin:0;font-size:20px;color:var(--wine-900)">Quotes</h2>
@@ -170,7 +173,6 @@
     </table>
   </div>
 
-  <!-- PAYMENTS -->
   <div class="panel" id="panel-payments">
     <h2 style="margin:0 0 16px;font-size:20px;color:var(--wine-900)">Payments &amp; settlements</h2>
     <table>
@@ -181,27 +183,25 @@
         <tr><td>FLW_TX_98305</td><td>Elizabeth Mensah</td><td class="money">₦148,450</td><td>NGN</td><td>Flutterwave</td><td><span class="badge b-canc">Failed</span></td><td><button class="btn btn-sm btn-outline-danger">Retry</button></td></tr>
       </tbody>
     </table>
-    <div style="margin-top:20px;padding:16px;background:var(--card);border:1px solid var(--line);border-radius:8px">
+    <div style="margin-top:20px;padding:16px;background:#F8F3E8;border:1px solid var(--line);border-radius:var(--r-sm)">
       <div class="micro">Next settlement</div>
       <div class="money" style="font-size:20px">₦298,450</div>
       <div class="micro" style="margin-top:4px">Flutterwave · 3 business days</div>
     </div>
   </div>
 
-  <!-- PORTFOLIO -->
   <div class="panel" id="panel-portfolio">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
       <h2 style="margin:0;font-size:20px;color:var(--wine-900)">Portfolio</h2>
       <button class="btn btn-sm">Add image</button>
     </div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
-      <div style="background:var(--wine-100);height:180px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--wine-700);font-weight:700">Look 1 · Champagne</div>
-      <div style="background:var(--wine-100);height:180px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--wine-700);font-weight:700">Look 2 · Emerald</div>
-      <div style="background:var(--wine-100);height:180px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--wine-700);font-weight:700">Look 3 · Navy</div>
+      <div style="background:var(--wine-100);height:180px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;color:var(--wine-700);font-weight:700">Look 1 · Champagne</div>
+      <div style="background:var(--wine-100);height:180px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;color:var(--wine-700);font-weight:700">Look 2 · Emerald</div>
+      <div style="background:var(--wine-100);height:180px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;color:var(--wine-700);font-weight:700">Look 3 · Navy</div>
     </div>
   </div>
 
-  <!-- SERVICES -->
   <div class="panel" id="panel-services">
     <h2 style="margin:0 0 16px;font-size:20px;color:var(--wine-900)">Services</h2>
     <table>
@@ -214,19 +214,17 @@
     </table>
   </div>
 
-  <!-- REVIEWS -->
   <div class="panel" id="panel-reviews">
     <h2 style="margin:0 0 16px;font-size:20px;color:var(--wine-900)">Reviews</h2>
     <table>
       <thead><tr><th>Customer</th><th>Project</th><th>Rating</th><th>Text</th><th>Status</th><th>Action</th></tr></thead>
       <tbody>
-        <tr><td>Chinwe Okafor</td><td>Green bespoke dress</td><td>★★★★★</td><td>"Perfect fit, beautifully finished."</td><td><span class="badge b-done">Visible</span></td><td><button class="btn btn-sm btn-outline">Reply</button></td></tr>
-        <tr><td>Samuel Adebayo</td><td>Tailored suit</td><td>★★★★☆</td><td>"Great communication throughout."</td><td><span class="badge b-done">Visible</span></td><td><button class="btn btn-sm btn-outline">Reply</button></td></tr>
+        <tr><td>Chinwe Okafor</td><td>Green bespoke dress</td><td style="color:var(--wine-700);font-weight:bold">★★★★★</td><td>"Perfect fit, beautifully finished."</td><td><span class="badge b-done">Visible</span></td><td><button class="btn btn-sm btn-outline">Reply</button></td></tr>
+        <tr><td>Samuel Adebayo</td><td>Tailored suit</td><td style="color:var(--wine-700);font-weight:bold">★★★★☆</td><td>"Great communication throughout."</td><td><span class="badge b-done">Visible</span></td><td><button class="btn btn-sm btn-outline">Reply</button></td></tr>
       </tbody>
     </table>
   </div>
 
-  <!-- CASES -->
   <div class="panel" id="panel-cases">
     <h2 style="margin:0 0 16px;font-size:20px;color:var(--wine-900)">Support cases</h2>
     <table>
@@ -237,20 +235,21 @@
     </table>
   </div>
 
-  <!-- AUDIT -->
   <div class="panel" id="panel-audit">
     <h2 style="margin:0 0 16px;font-size:20px;color:var(--wine-900)">Audit log</h2>
     <table>
       <thead><tr><th>Time</th><th>Admin</th><th>Action</th><th>Record</th><th>Details</th></tr></thead>
       <tbody>
-        <tr><td>21 Oct, 09:12</td><td>Designer (you)</td><td>Quote accepted</td><td>Q-2026-041</td><td>₦180,000 · Samuel Adebayo</td></tr>
-        <tr><td>20 Oct, 14:05</td><td>Designer (you)</td><td>Project updated</td><td>Champagne gold dress</td><td>Stage: Production · 65%</td></tr>
-        <tr><td>19 Oct, 11:30</td><td>Designer (you)</td><td>Quote sent</td><td>Q-2026-042</td><td>₦416,900 · Abie Johnson</td></tr>
+        <tr><td>21 Oct, 09:12</td><td>Lead Designer (you)</td><td>Quote accepted</td><td>Q-2026-041</td><td>₦180,000 · Samuel Adebayo</td></tr>
+        <tr><td>20 Oct, 14:05</td><td>Lead Designer (you)</td><td>Project updated</td><td>Champagne gold dress</td><td>Stage: Production · 65%</td></tr>
+        <tr><td>19 Oct, 11:30</td><td>Lead Designer (you)</td><td>Quote sent</td><td>Q-2026-042</td><td>₦416,900 · Abie Johnson</td></tr>
       </tbody>
     </table>
   </div>
 
-  <footer>Clother · Admin portal · Dej. by Ayodeji</footer>
+  <footer style="margin-top:60px;padding-bottom:40px;color:var(--muted);font-size:11px;letter-spacing:.2em;text-align:center;text-transform:uppercase">
+    Dej. by Ayodeji · Admin portal
+  </footer>
 </main>
 
 <script>
@@ -259,7 +258,6 @@ function show(id){
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.getElementById('panel-'+id).classList.add('active');
   document.getElementById('page-title').textContent = id.charAt(0).toUpperCase()+id.slice(1);
-  // highlight sidebar
   document.querySelectorAll('aside .nav-item').forEach(n=>n.classList.remove('active'));
   event.currentTarget.classList.add('active');
 }
