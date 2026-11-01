@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Dej. by Ayodeji — Bespoke Formalwear",
-  description:
-    "Bespoke dresses, tailored suits and occasion wear. Consultations, quotes and projects in one place.",
+  title: "Clother — Bespoke Formalwear",
+  description: "Dresses and suits, made for your occasion. Consultations, quotes and projects in one place.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
