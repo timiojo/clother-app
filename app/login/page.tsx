@@ -22,7 +22,7 @@ export default function LoginPage() {
     <main className="min-h-screen flex items-center justify-center bg-paper px-6 py-12">
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
-          <span className="logo serif text-4xl text-wine">Clother.</span>
+          <span className="logo serif text-4xl text-wine">Dej.<span className="block font-sans text-[10px] tracking-[0.34em] mt-2">BY AYODEJI</span></span>
           <p className="micro mt-2">Sign in to your studio</p>
         </div>
 
@@ -52,7 +52,7 @@ export default function LoginPage() {
             </button>
           </form>
           <p className="mt-6 text-center">
-            New to Clother?{" "}
+            New to Dej. by Ayodeji?{" "}
             <button className="btn btn-s mt-0" onClick={() => router.push("/signup")}>Create account</button>
           </p>
         </div>
