@@ -3,7 +3,7 @@ export default function Home() {
     <main className="min-h-screen bg-paper text-ink">
       <header className="border-b border-line px-6 py-10">
         <div className="max-w-4xl mx-auto">
-          <span className="logo serif text-5xl text-wine">Clother.</span>
+          <span className="logo serif text-5xl text-wine">Dej.<span className="block font-sans text-[10px] tracking-[0.34em] mt-2">BY AYODEJI</span></span>
           <nav className="flex gap-6 mt-4 text-sm font-semibold">
             <a href="/services" className="hover:text-wine-700">Services</a>
             <a href="/portfolio" className="hover:text-wine-700">Portfolio</a>
@@ -34,34 +34,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="max-w-4xl mx-auto px-6 py-20 border-y border-line">
-        <div className="grid md:grid-cols-3 gap-8 text-left">
-          <div>
-            <div className="w-10 h-10 rounded-sm bg-wine-100 flex items-center justify-center mb-4">
-              <span className="text-wine-700 font-bold text-lg">📝</span>
-            </div>
-            <h3 className="font-display text-xl text-wine-900 mb-2">Structured brief</h3>
-            <p className="text-sm text-muted">Garment, occasion, budget, deadline — everything the studio needs to quote accurately.</p>
-          </div>
-          <div>
-            <div className="w-10 h-10 rounded-sm bg-wine-100 flex items-center justify-center mb-4">
-              <span className="text-wine-700 font-bold text-lg">💬</span>
-            </div>
-            <h3 className="font-display text-xl text-wine-900 mb-2">Project chat</h3>
-            <p className="text-sm text-muted">Decisions live against the project, not lost in messaging apps.</p>
-          </div>
-          <div>
-            <div className="w-10 h-10 rounded-sm bg-wine-100 flex items-center justify-center mb-4">
-              <span className="text-wine-700 font-bold text-lg">🧾</span>
-            </div>
-            <h3 className="font-display text-xl text-wine-900 mb-2">Itemised quotes</h3>
-            <p className="text-sm text-muted">Scope, price, timeline and terms — accept explicitly before paying.</p>
-          </div>
-        </div>
-      </section>
-
       <footer className="border-t border-line px-6 py-12 text-center">
-        <span className="micro">Clother · Bespoke design · Thoughtfully made</span>
+        <span className="micro">Dej. by Ayodeji · Bespoke design · Thoughtfully made</span>
       </footer>
     </main>
   );
