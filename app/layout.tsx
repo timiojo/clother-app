@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Clother — Bespoke Formalwear",
+  title: "Dej. by Ayodeji — Bespoke Formalwear",
   description: "Dresses and suits, made for your occasion. Consultations, quotes and projects in one place.",
 };
 
