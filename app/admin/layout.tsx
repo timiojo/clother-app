@@ -30,7 +30,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     <div className="flex min-h-screen bg-paper text-ink">
       <aside className={`w-64 bg-wine text-card shrink-0 border-r border-white/10 ${open ? "translate-x-0" : "-translate-x-full"} fixed left-0 top-0 bottom-0 z-50 transition`}>
         <div className="p-5 border-b border-white/10">
-          <span className="serif text-2xl font-bold">Clother.</span>
+          <span className="serif text-2xl font-bold">Dej.<span className="block font-sans text-[10px] tracking-[0.34em] mt-2">BY AYODEJI</span></span>
           <p className="micro mt-1">ADMIN</p>
         </div>
         <nav className="p-4">
