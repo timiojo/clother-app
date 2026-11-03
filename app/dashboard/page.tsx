@@ -3,6 +3,8 @@
 import { useSession } from "better-auth/react";
 import { useRouter, usePathname } from "next/navigation";
 import { useEffect } from "react";
+import Link from "next/link";
+import NotificationBell from "@/components/NotificationBell";
 
 export default function CustomerDashboardPage() {
   const { session } = useSession();
@@ -18,9 +20,12 @@ export default function CustomerDashboardPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <p className="micro">Dashboard</p>
-        <h1 className="serif text-3xl text-wine-900 mt-1">Your projects</h1>
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="micro">Dashboard</p>
+          <h1 className="serif text-3xl text-wine-900 mt-1">Your projects</h1>
+        </div>
+        <NotificationBell />
       </div>
 
       <div className="flex items-center justify-between mb-4">
