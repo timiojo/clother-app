@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start -p ${PORT:-3000}",
+    "start": "NODE_ENV=production node server.js",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
     "fw:spike": "node scripts/fw-spike.mjs"
